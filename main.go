@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"image/color"
 	"unicode"
 
@@ -252,11 +251,9 @@ func main() {
 		}
 	}))
 
+	// Focus the first tile so the user can start typing immediately
+	gs.SelectCell(0, 0)
+
 	window.Show()
 	a.Run()
-	tidyUp()
-}
-
-func tidyUp() {
-	fmt.Println("Exited")
 }
