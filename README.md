@@ -32,9 +32,12 @@ A desktop Wordle solver built with Go and [Fyne](https://fyne.io/). Type in your
 ## Building
 
 ```sh
+go generate ./...
 go build -o wordle-solver .
 ./wordle-solver
 ```
+
+`go generate` downloads the word list from the [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) repo. Requires `curl`.
 
 Requires Go 1.21+ and a C compiler (for Fyne's OpenGL bindings).
 
@@ -46,4 +49,4 @@ go test ./...
 
 ## Word List
 
-The solver uses a 14,854-word list embedded at compile time from `words.txt`, sourced from the [NYT Wordle valid guesses list](https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b).
+The solver uses a ~14,855-word list downloaded at build time from [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) and embedded into the binary.
