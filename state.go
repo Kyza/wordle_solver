@@ -101,6 +101,19 @@ func (gs *GameState) Deselect() {
 	gs.CursorCol.Set(-1)
 }
 
+// focusFirstEmptyCell moves the cursor to the first cell of the first empty row.
+func (gs *GameState) focusFirstEmptyCell() {
+	for r := 0; r < Rows; r++ {
+		w, _ := gs.Words[r].Get()
+		if strings.TrimSpace(w) == "" {
+			gs.SelectCell(r, 0)
+			return
+		}
+	}
+	gs.Deselect()
+}
+
+
 // IsCursor returns true if (row, col) is the current cursor position.
 func (gs *GameState) IsCursor(row, col int) bool {
 	r, _ := gs.CursorRow.Get()
@@ -207,6 +220,7 @@ func (gs *GameState) InsertWord(formatted string) {
 		if strings.TrimSpace(w) == "" {
 			gs.Words[r].Set(word)
 			gs.syncLettersFromWord(r)
+			gs.focusFirstEmptyCell()
 			return
 		}
 	}
@@ -365,4 +379,7 @@ func (gs *GameState) Solve() {
 		gs.Progress.Set(0.5 + p*0.5)
 	})
 	gs.NormalSuggestions.Set(formatSuggestions(capSuggestions(normal), len(cands)))
+
+	// Refocus cursor to the first empty row so the user can keep typing
+	gs.focusFirstEmptyCell()
 }
