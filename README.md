@@ -29,15 +29,18 @@ A desktop Wordle solver built with Go and [Fyne](https://fyne.io/). Type in your
 - `SALET  ⌊3⌋  290 left` — worst-case depth of 3, largest partition has 290 candidates
 - `CRANE ✓` — only one candidate remains; this is the answer
 
-## Building
+## Install
 
 ```sh
-go generate ./...
+go install github.com/Kyza/wordle_solver@latest
+```
+
+Or build from source:
+
+```sh
 go build -o wordle-solver .
 ./wordle-solver
 ```
-
-`go generate` downloads the word list from the [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) repo. Requires `curl`.
 
 Requires Go 1.21+ and a C compiler (for Fyne's OpenGL bindings).
 
@@ -49,4 +52,4 @@ go test ./...
 
 ## Word List
 
-The solver uses a ~14,855-word list downloaded at build time from [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) and embedded into the binary.
+The solver uses a ~14,855-word list from [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) (MIT license, see `LICENSE-words.txt`).

@@ -1,4 +1,4 @@
-module wordle-solver
+module github.com/Kyza/wordle_solver
 
 go 1.18
 
