@@ -33,16 +33,37 @@ A desktop Wordle solver built with Go and [Fyne](https://fyne.io/). Type in your
 
 ```sh
 go install github.com/Kyza/wordle_solver@latest
+wordle_solver
 ```
 
-Or build from source:
+### Requirements
+
+- **[Go 1.21+](https://go.dev/dl)**
+- **C compiler** (for Fyne's OpenGL bindings)
+
+#### macOS
+```sh
+xcode-select --install
+```
+
+#### Linux (Debian/Ubuntu)
+```sh
+sudo apt-get install build-essential libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+```
+
+#### Windows
+```powershell
+winget install winlibs
+```
+
+### Build from Source
 
 ```sh
+git clone https://github.com/Kyza/wordle_solver.git
+cd wordle_solver
 go build -o wordle-solver .
 ./wordle-solver
 ```
-
-Requires Go 1.21+ and a C compiler (for Fyne's OpenGL bindings).
 
 ## Running Tests
 
