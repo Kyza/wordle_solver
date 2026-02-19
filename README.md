@@ -37,22 +37,23 @@ Install **[Go 1.21+](https://go.dev/dl)** and a C compiler:
 
 #### macOS
 ```sh
+brew install go
 xcode-select --install
 ```
 
 #### Linux (Debian/Ubuntu)
 ```sh
-sudo apt-get install build-essential libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+sudo apt-get install golang-go build-essential libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
 ```
 
 #### Linux (Arch)
 ```sh
-sudo pacman -S base-devel libx11 libxrandr libxinerama libxcursor libxi
+sudo pacman -S go base-devel libx11 libxrandr libxinerama libxcursor libxi
 ```
 
 #### Windows
 ```powershell
-winget install winlibs
+winget install golang.go winlibs
 ```
 
 ### Run
