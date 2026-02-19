@@ -83,7 +83,14 @@ go install github.com/Kyza/wordle_solver@latest
 wordle_solver  # or wordle_solver.exe on Windows
 ```
 
-**Note**: On Windows, this may show a console window. Use the build command above to avoid it.
+**Windows note**: To avoid the console window with `go install`, add the `-ldflags` flag:
+
+```powershell
+go install -ldflags="-H=windowsgui" github.com/Kyza/wordle_solver@latest
+wordle_solver.exe
+```
+
+If you're building on Windows, this works directly. If cross-compiling from macOS/Linux, use the [build command](#windows) instead.
 
 ## Running Tests
 
