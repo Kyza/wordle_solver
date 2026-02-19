@@ -56,43 +56,34 @@ sudo pacman -S go base-devel libx11 libxrandr libxinerama libxcursor libxi
 winget install golang.go winlibs
 ```
 
-### Run
+### Build & Run
 
-Once dependencies are installed:
+#### Windows
 
-```sh
-go install github.com/Kyza/wordle_solver@latest
-wordle_solver
-```
-
-**Note for Windows users**: By default, `go install` may display a console window alongside the GUI. To avoid this, use one of the build options below (recommended).
-
-### Build from Source
-
-```sh
-git clone https://github.com/Kyza/wordle_solver.git
-cd wordle_solver
-go build -o wordle-solver .
-./wordle-solver
-```
-
-#### Windows (hide console window)
-
-To build without the console window, use the `-H=windowsgui` linker flag:
-
-**Option 1**: Using the Makefile (recommended if you have `make` installed)
-```powershell
-make build-windows
-.\wordle-solver.exe
-```
-
-**Option 2**: Manual build with linker flag
 ```powershell
 go build -ldflags "-H=windowsgui" -o wordle-solver.exe .
 .\wordle-solver.exe
 ```
 
-Both approaches add the `-H=windowsgui` flag, which tells the Go linker to link with the Windows GUI subsystem instead of the console subsystem. This prevents the cmd window from appearing when you launch the app.
+The `-H=windowsgui` flag prevents the console window from appearing.
+
+#### macOS & Linux
+
+```sh
+go build -o wordle-solver .
+./wordle-solver
+```
+
+#### Quick Install (all platforms)
+
+For a quick install via `go install`:
+
+```sh
+go install github.com/Kyza/wordle_solver@latest
+wordle_solver  # or wordle_solver.exe on Windows
+```
+
+**Note**: On Windows, this may show a console window. Use the build command above to avoid it.
 
 ## Running Tests
 
@@ -103,3 +94,5 @@ go test ./...
 ## Word List
 
 The solver uses a ~14,855-word list from [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) (MIT license, see `LICENSE-words.txt`).
+
+
