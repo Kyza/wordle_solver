@@ -35,62 +35,46 @@ A desktop Wordle solver built with Go and [Fyne](https://fyne.io/). Type in your
 
 Install **[Go 1.21+](https://go.dev/dl)** and a C compiler:
 
+#### Windows
+
+```powershell
+winget install golang.go winlibs
+```
+
+#### Linux (Arch)
+
+```sh
+sudo pacman -S go base-devel libx11 libxrandr libxinerama libxcursor libxi
+```
+
+#### Linux (Debian/Ubuntu)
+
+```sh
+sudo apt-get install golang-go build-essential libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+```
+
 #### macOS
+
 ```sh
 brew install go
 xcode-select --install
 ```
 
-#### Linux (Debian/Ubuntu)
-```sh
-sudo apt-get install golang-go build-essential libgl1-mesa-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
-```
-
-#### Linux (Arch)
-```sh
-sudo pacman -S go base-devel libx11 libxrandr libxinerama libxcursor libxi
-```
+### Install App
 
 #### Windows
-```powershell
-winget install golang.go winlibs
-```
-
-### Build & Run
-
-#### Windows
-
-```powershell
-go build -ldflags "-H=windowsgui" -o wordle-solver.exe .
-.\wordle-solver.exe
-```
-
-The `-H=windowsgui` flag prevents the console window from appearing.
-
-#### macOS & Linux
-
-```sh
-go build -o wordle-solver .
-./wordle-solver
-```
-
-#### Quick Install (all platforms)
-
-For a quick install via `go install`:
-
-```sh
-go install github.com/Kyza/wordle_solver@latest
-wordle_solver  # or wordle_solver.exe on Windows
-```
-
-**Windows note**: To avoid the console window with `go install`, add the `-ldflags` flag:
 
 ```powershell
 go install -ldflags="-H=windowsgui" github.com/Kyza/wordle_solver@latest
 wordle_solver.exe
 ```
 
-If you're building on Windows, this works directly. If cross-compiling from macOS/Linux, use the [build command](#windows) instead.
+#### macOS & Linux
+
+```sh
+go install github.com/Kyza/wordle_solver@latest
+wordle_solver
+```
 
 ## Running Tests
 
@@ -101,5 +85,3 @@ go test ./...
 ## Word List
 
 The solver uses a ~14,855-word list from [tabatkins/wordle-list](https://github.com/tabatkins/wordle-list) (MIT license, see `LICENSE-words.txt`).
-
-
