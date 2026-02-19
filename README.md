@@ -65,7 +65,7 @@ go install github.com/Kyza/wordle_solver@latest
 wordle_solver
 ```
 
-**Windows users**: If a console window appears alongside the GUI, build locally instead (see below).
+**Note for Windows users**: By default, `go install` may display a console window alongside the GUI. To avoid this, use one of the build options below (recommended).
 
 ### Build from Source
 
@@ -78,7 +78,9 @@ go build -o wordle-solver .
 
 #### Windows (hide console window)
 
-**Option 1**: Using the Makefile (if you have `make` installed)
+To build without the console window, use the `-H=windowsgui` linker flag:
+
+**Option 1**: Using the Makefile (recommended if you have `make` installed)
 ```powershell
 make build-windows
 .\wordle-solver.exe
@@ -89,6 +91,8 @@ make build-windows
 go build -ldflags "-H=windowsgui" -o wordle-solver.exe .
 .\wordle-solver.exe
 ```
+
+Both approaches add the `-H=windowsgui` flag, which tells the Go linker to link with the Windows GUI subsystem instead of the console subsystem. This prevents the cmd window from appearing when you launch the app.
 
 ## Running Tests
 
