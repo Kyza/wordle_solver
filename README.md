@@ -65,6 +65,8 @@ go install github.com/Kyza/wordle_solver@latest
 wordle_solver
 ```
 
+**Windows users**: If a console window appears alongside the GUI, build locally instead (see below).
+
 ### Build from Source
 
 ```sh
@@ -72,6 +74,20 @@ git clone https://github.com/Kyza/wordle_solver.git
 cd wordle_solver
 go build -o wordle-solver .
 ./wordle-solver
+```
+
+#### Windows (hide console window)
+
+**Option 1**: Using the Makefile (if you have `make` installed)
+```powershell
+make build-windows
+.\wordle-solver.exe
+```
+
+**Option 2**: Manual build with linker flag
+```powershell
+go build -ldflags "-H=windowsgui" -o wordle-solver.exe .
+.\wordle-solver.exe
 ```
 
 ## Running Tests
